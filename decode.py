@@ -1,16 +1,8 @@
-import sys
-
-message = "sunboT219x10y20z1t1000A10.880V12s33"
-if len(sys.argv)>1:
-    message = sys.argv[1]
-
-
-
-def decode(x, message, case_sensitive = False):
+def given_word(x, word, case_sensitive = False):
     if case_sensitive:
-        term = message.split(x)
+        term = word.split(x)
     else:
-        term = message.lower().split(x.lower())
+        term = word.lower().split(x.lower())
     result = ''
     valid = ''
     if len(term)<2:
@@ -33,7 +25,8 @@ def decode(x, message, case_sensitive = False):
         return float(result)
     return int(result)
     
-def decode_all(message):
+
+def word_by_word(message):
     results = []
     key = ''
     value = ''
@@ -67,17 +60,14 @@ def decode_all(message):
         results.append({ "key":key, "value":value, "type": type})
     return results
 
-results = decode_all(message)
 
-print(f"Decode result of '{message}'")
+def print_results(results):
+    print('─'*80)
+    print(f'{"KEY":20}{"VALUE":20}TYPE')
+    print('─'*80)
 
-print('─'*80)
-print(f'{"KEY":20}{"VALUE":20}TYPE')
-print('─'*80)
-
-
-for result in results:
-    print(f'{result["key"]:20}{str(result["value"]):20}{result["type"]}')
+    for result in results:
+        print(f'{result["key"]:20}{str(result["value"]):20}{result["type"]}')
 
 
 
