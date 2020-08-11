@@ -10,3 +10,6 @@ def list(print_on_screen=False):
             print('|'+ port.device)
         results.append(port.device)
     return results
+
+if __name__ == "__main__":
+    list(True)

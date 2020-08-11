@@ -35,7 +35,10 @@ def word_by_word(message):
             if value != '' and key !='':
                 type = 'integer'
                 if '.' in value:
-                    value = float(value) 
+                    try:
+                        value = float(value)
+                    except:
+                        value = 0.0
                     type = 'float'
                 else:
                     value = int(value)
@@ -53,7 +56,10 @@ def word_by_word(message):
         if value =='':
             value = 0
         elif '.' in value:
-            value = float(value)
+            try:
+                value = float(value)
+            except:
+                value = 0.0
             type = 'float'
         else:
             value = int(value)
