@@ -76,6 +76,9 @@ def print_results(results):
         print(f'{result["key"]:20}{str(result["value"]):20}{result["type"]}')
 
 
-
+if __name__ == "__main__":
+    message = input("Input a string to decode:")
+    decoded = word_by_word(message)
+    print_results(decoded)
 
 

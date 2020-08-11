@@ -1,11 +1,11 @@
 import sys, serial
-import decode, ui
+import thinksspeak, decode, ui
 
 port = 'COM1'
 
 print(ui.logo_black)
-print("■ Welcome to ThingsSpeek Serial Code Decoder API")
-print(rf"/:::\ Serial port, try to connect {port}...")
+print("■ Welcome to ThingsSpeak Serial Code Decoder API Over ⋮⋮⋮ROS")
+print(rf"■ Try to connect /:::\{port}...")
 
 ser = serial.Serial(
     port= port,\
@@ -16,6 +16,8 @@ ser = serial.Serial(
         timeout=0)
 
 print(rf"■ Connected to {port}.")
+
+print(ui.ros)
 print("Listening...")
 
 #this will store the line
@@ -29,6 +31,7 @@ while True:
             print(f"Data Received: {data}")
             decoded = decode.word_by_word(data)
             decode.print_results(decoded)
+            thinksspeak.api(decoded)
             print("%")
 
             history.append(data)
